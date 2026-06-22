@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Edge Vision Lab by Vineeth Velmurugan: a Rust-powered browser demo for camera calibration, motion detection, tracking, latency profiling, and WASM snapshots."
+    />
+    <title>Edge Vision Lab | Vineeth Makes</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="stage">
+        <div class="topbar">
+          <div>
+            <p class="eyebrow">Vineeth Makes</p>
+            <h1>Edge Vision Lab</h1>
+          </div>
+          <div class="status">
+            <span class="dot"></span>
+            <span>Rust WASM pipeline</span>
+          </div>
+        </div>
+
+        <div class="vision-grid">
+          <div class="video-panel">
+            <canvas id="frameCanvas" width="960" height="540"></canvas>
+            <canvas id="overlayCanvas" width="960" height="540"></canvas>
+          </div>
+          <aside class="metrics">
+            <div class="metric">
+              <span>FPS</span>
+              <strong id="fps">0</strong>
+            </div>
+            <div class="metric">
+              <span>Total latency</span>
+              <strong id="latency">0 ms</strong>
+            </div>
+            <div class="metric">
+              <span>Detections</span>
+              <strong id="detections">0</strong>
+            </div>
+            <div class="metric">
+              <span>Active tracks</span>
+              <strong id="tracks">0</strong>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="lower-grid">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Tracked Objects</h2>
+            <span id="frameId">frame 0</span>
+          </div>
+          <div id="trackList" class="track-list"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Pipeline Timing</h2>
+            <span>edge budget</span>
+          </div>
+          <div class="bars">
+            <div class="bar-row">
+              <span>capture</span>
+              <div><i id="captureBar"></i></div>
+              <b id="captureMs">0</b>
+            </div>
+            <div class="bar-row">
+              <span>preprocess</span>
+              <div><i id="preprocessBar"></i></div>
+              <b id="preprocessMs">0</b>
+            </div>
+            <div class="bar-row">
+              <span>detection</span>
+              <div><i id="detectionBar"></i></div>
+              <b id="detectionMs">0</b>
+            </div>
+            <div class="bar-row">
+              <span>tracking</span>
+              <div><i id="trackingBar"></i></div>
+              <b id="trackingMs">0</b>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
